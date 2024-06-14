@@ -1,4 +1,4 @@
-package weeklyQuiz;
+package weeklyQuiz.week1;
 
 import java.util.Scanner;
 
