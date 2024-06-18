@@ -3,8 +3,8 @@ package weeklyQuiz.week2;
 public class Electronics extends Product {
     private String brand;
 
-    public Electronics(Long id, String name, int price, int stock, String brand) {
-        super(id, name, price, stock);
+    public Electronics(String name, int price, int stock, String brand) {
+        super(name, price, stock);
         this.brand = brand;
     }
 

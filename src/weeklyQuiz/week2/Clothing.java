@@ -3,8 +3,8 @@ package weeklyQuiz.week2;
 public class Clothing extends Product {
     private String size; // XS, S, M, L, XL
 
-    public Clothing(Long id, String name, int price, int stock, String size) {
-        super(id, name, price, stock);
+    public Clothing(String name, int price, int stock, String size) {
+        super(name, price, stock);
         this.size = size;
     }
 

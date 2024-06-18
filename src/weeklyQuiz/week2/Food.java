@@ -6,8 +6,8 @@ import java.time.temporal.ChronoUnit;
 public class Food extends Product{
     private LocalDate expirationDate;
 
-    public Food(Long id, String name, int price, int stock, LocalDate expirationDate) {
-        super(id, name, price, stock);
+    public Food(String name, int price, int stock, LocalDate expirationDate) {
+        super(name, price, stock);
         this.expirationDate = expirationDate;
     }
 

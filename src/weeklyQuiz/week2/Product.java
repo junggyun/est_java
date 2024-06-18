@@ -1,23 +1,17 @@
 package weeklyQuiz.week2;
 
 public class Product {
-    private final Long id;
     private String name;
     private int price;
     private int stock;
 
-    public Product(Long id, String name, int price, int stock) {
-        this.id = id;
+    public Product(String name, int price, int stock) {
         this.name = name;
         this.price = price;
         this.stock = stock;
     }
 
     //getter setter
-    public Long getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
@@ -49,6 +43,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return "상품번호: " + id + ", 상품명: " + name + ", 가격: " + calculatePrice() + "원, 재고: " + stock + "개";
+        return "상품명: " + name + ", 가격: " + calculatePrice() + "원, 재고: " + stock + "개";
     }
 }
