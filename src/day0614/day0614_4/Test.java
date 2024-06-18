@@ -1,4 +1,4 @@
-package day0614.day0615_4;
+package day0614.day0614_4;
 
 public class Test {
     public static void main(String[] args) {
