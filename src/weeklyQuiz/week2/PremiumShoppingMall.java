@@ -7,7 +7,13 @@ public class PremiumShoppingMall extends ShoppingMall {
     }
 
     @Override
-    public boolean checkOrderAvailability(Product product) {
-        return product.getStock() >= 10;
+    public boolean checkOrderAvailability() {
+        int count = 0;
+        for (Product product : getProducts()) {
+            if (product != null) {
+                count += product.getStock();
+            }
+        }
+        return count >= 10;
     }
 }

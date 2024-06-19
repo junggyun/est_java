@@ -8,14 +8,6 @@ public class Clothing extends Product {
         this.size = size;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
     @Override
     public int calculatePrice() {
         // size.contains("L")을 true로 반환하는 경우는 L, XL만 존재 => L이상

@@ -9,6 +9,10 @@ public abstract class ShoppingMall {
         this.products = new Product[size];
     }
 
+    public Product[] getProducts() {
+        return products;
+    }
+
     //상품 추가
     public void addProduct(Product product) {
         for (int i = 0; i < products.length; i++) {
@@ -21,6 +25,10 @@ public abstract class ShoppingMall {
             }
         }
         //배열이 꽉 찬 경우
+        extendArray(product);
+    }
+
+    private void extendArray(Product product) {
         products = Arrays.copyOf(products, products.length * 2);
         addProduct(product);
     }
@@ -77,13 +85,13 @@ public abstract class ShoppingMall {
         System.out.println("=====전체 상품 출력=====");
         for (Product product : products) {
             if (product == null) continue;
-            System.out.print(product.toString());
-            System.out.println(", 주문 가능 여부: " + (checkOrderAvailability(product) ? "O" : "X"));
+            System.out.println(product.toString());
             count++;
         }
         if (count == 0) System.out.println("상품이 존재하지 않습니다.");
+        System.out.println("주문 가능 여부: " + (checkOrderAvailability() ? "O" : "X"));
         System.out.println();
     }
 
-    public abstract boolean checkOrderAvailability(Product product);
+    public abstract boolean checkOrderAvailability();
 }
