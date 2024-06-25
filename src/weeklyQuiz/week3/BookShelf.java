@@ -1,6 +1,7 @@
 package weeklyQuiz.week3;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,7 +40,18 @@ public class BookShelf<T> implements BookManager<T> {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public boolean isNewIdentifier(T t) {
         return searchByTitle("").stream().noneMatch(b -> b.getIdentifier().equals(t));
+    }
+
+    @Override
+    public Book<T> searchByIdentifier(T t) {
+        for (Book<T> book : books) {
+            if (book.getIdentifier().equals(t)) {
+                return book;
+            }
+        }
+        throw new BookNotFoundException();
     }
 }
