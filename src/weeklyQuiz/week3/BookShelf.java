@@ -13,7 +13,7 @@ public class BookShelf<T> implements BookManager<T> {
 
     @Override
     public void addBook(Book<T> book) {
-        if (isNewIdentifier(book.getIdentifier())) {
+        if (isNewIdentifier(book.getIdentifier())) { // 식별자 중복 검사
             books.add(book);
         } else {
             throw new IdentifierDuplicateException();
