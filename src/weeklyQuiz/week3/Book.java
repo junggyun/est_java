@@ -23,8 +23,9 @@ public class Book<T> {
         return identifier;
     }
 
+    //도서 정보 출력에 사용
     @Override
     public String toString() {
-        return "=====도서 정보=====" + System.lineSeparator() + "제목: " + title + ", 저자: " + author + ", 식별자: " + identifier;
+        return "제목: " + title + ", 저자: " + author + ", 식별자: " + identifier;
     }
 }

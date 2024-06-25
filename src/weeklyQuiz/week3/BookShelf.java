@@ -2,9 +2,10 @@ package weeklyQuiz.week3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookShelf<T> implements BookManager<T> {
-    private final List<Book<T>> books;
+    private List<Book<T>> books;
 
     public BookShelf() {
         this.books = new ArrayList<>();
@@ -12,7 +13,11 @@ public class BookShelf<T> implements BookManager<T> {
 
     @Override
     public void addBook(Book<T> book) {
-        books.add(book);
+        if (isNewIdentifier(book.getIdentifier())) {
+            books.add(book);
+        } else {
+            throw new IdentifierDuplicateException();
+        }
     }
 
     @Override
@@ -22,23 +27,19 @@ public class BookShelf<T> implements BookManager<T> {
 
     @Override
     public List<Book<T>> searchByTitle(String title) {
-        List<Book<T>> result = new ArrayList<>();
-        for (Book<T> book : books) {
-            if (book.getTitle().equalsIgnoreCase(title) || book.getTitle().contains(title)) {
-                result.add(book);
-            }
-        }
-        return result;
+        return books.stream()
+                .filter(b -> b.getTitle().toLowerCase().contains(title.toLowerCase())) // 소문자로 변환하여 대소문자 무시
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Book<T>> searchByAuthor(String author) {
-        List<Book<T>> result = new ArrayList<>();
-        for (Book<T> book : books) {
-            if (book.getAuthor().equalsIgnoreCase(author) || book.getAuthor().contains(author)) {
-                result.add(book);
-            }
-        }
-        return result;
+        return books.stream()
+                .filter(b -> b.getAuthor().toLowerCase().contains(author.toLowerCase())) // 소문자로 변환하여 대소문자 무시
+                .collect(Collectors.toList());
+    }
+
+    public boolean isNewIdentifier(T t) {
+        return searchByTitle("").stream().noneMatch(b -> b.getIdentifier().equals(t));
     }
 }

@@ -15,12 +15,12 @@ public class BookStack<T> {
     }
 
     public Book<T> popBook() {
-        if (isEmpty()) throw new EmptyStackException();
+        if (books.isEmpty()) throw new EmptyStackException();
         return books.pop();
     }
 
     public Book<T> peekBook() {
-        if (isEmpty()) throw new EmptyStackException();
+        if (books.isEmpty()) throw new EmptyStackException();
         return books.peek();
     }
 
